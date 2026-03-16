@@ -13,490 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        :root {
-            --primary-dark: #1a2d3d;
-            --primary-navy: #2d4a5f;
-            --accent-gold: #c9a96e;
-            --text-dark: #1a1a1a;
-            --text-light: #666666;
-            --bg-white: #ffffff;
-            --bg-cream: #f9f8f5;
-            --border-light: #e8e6e1;
-            --shadow: 0 4px 20px rgba(0,0,0,0.07);
-            --shadow-lg: 0 16px 40px rgba(0,0,0,0.12);
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.7;
-            color: var(--text-dark);
-            background-color: var(--bg-white);
-        }
-
-        /* ── HEADER ── */
-        header {
-            background: var(--bg-white);
-            padding: 1.4rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 2rem; }
-
-        .header-content { display: flex; justify-content: space-between; align-items: center; }
-
-        .logo {
-            font-family: 'Lora', serif;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: var(--primary-navy);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            letter-spacing: 0.5px;
-            text-decoration: none;
-        }
-        .logo img { height: 34px; width: auto; }
-
-        nav ul { list-style: none; display: flex; gap: 2.5rem; }
-        nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 500;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            transition: color 0.25s;
-        }
-        nav a:hover { color: var(--accent-gold); }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--primary-navy);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .btn-nav {
-            background: var(--primary-navy);
-            color: white;
-            padding: 0.75rem 1.8rem;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.8px;
-            text-transform: uppercase;
-            transition: all 0.25s;
-        }
-        .btn-nav:hover { background: var(--accent-gold); color: var(--primary-dark); }
-
-        /* ── HERO ── */
-        .hero {
-            background: linear-gradient(to bottom, rgba(26,45,61,0.45) 0%, rgba(26,45,61,0.25) 60%, rgba(26,45,61,0.55) 100%),
-                        url('./images/hero.jpg') center/cover no-repeat;
-            color: white;
-            min-height: 92vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 4rem 2rem;
-        }
-
-        .hero-eyebrow {
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero h1 {
-            font-family: 'Lora', serif;
-            font-size: 4.2rem;
-            font-weight: 500;
-            line-height: 1.15;
-            margin-bottom: 1.2rem;
-            letter-spacing: 0.5px;
-        }
-
-        .hero-sub {
-            font-size: 1.2rem;
-            font-weight: 300;
-            opacity: 0.92;
-            max-width: 560px;
-            margin-bottom: 3rem;
-            line-height: 1.7;
-        }
-
-        .btn-hero {
-            display: inline-block;
-            padding: 1.1rem 3rem;
-            font-size: 0.88rem;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            background: white;
-            color: var(--primary-dark);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        .btn-hero:hover {
-            background: var(--accent-gold);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-        }
-
-        /* ── SECTIONS ── */
-        section { padding: 6rem 0; }
-
-        .section-label {
-            display: block;
-            text-align: center;
-            font-size: 0.75rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--accent-gold);
-            margin-bottom: 1rem;
-        }
-
-        section h2 {
-            font-family: 'Lora', serif;
-            font-size: 2.8rem;
-            text-align: center;
-            color: var(--primary-navy);
-            font-weight: 500;
-            margin-bottom: 1.2rem;
-        }
-
-        .section-intro {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 1.05rem;
-            max-width: 720px;
-            margin: 0 auto 4rem;
-            line-height: 1.9;
-        }
-
-        /* ── FAKTEN-LEISTE ── */
-        .facts-bar {
-            background: var(--primary-navy);
-            color: white;
-            padding: 2.5rem 0;
-        }
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-        .fact-item span {
-            display: block;
-            font-family: 'Lora', serif;
-            font-size: 2.2rem;
-            color: var(--accent-gold);
-            margin-bottom: 0.4rem;
-        }
-        .fact-item p {
-            font-size: 0.82rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.85;
-        }
-
-        /* ── HIGHLIGHTS ── */
-        .highlights-bg { background: var(--bg-cream); }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--bg-white);
-            padding: 3rem 2.5rem;
-            text-align: left;
-            transition: all 0.3s;
-            border-bottom: 3px solid transparent;
-        }
-        .feature-card:hover {
-            box-shadow: var(--shadow-lg);
-            border-bottom-color: var(--accent-gold);
-            transform: translateY(-4px);
-        }
-
-        .feature-num {
-            font-family: 'Lora', serif;
-            font-size: 2.5rem;
-            color: var (--border-light);
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-family: 'Lora', serif;
-            font-size: 1.25rem;
-            color: var(--primary-navy);
-            margin-bottom: 0.8rem;
-            font-weight: 500;
-        }
-        .feature-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.85; }
-
-        /* ── SPLIT IMAGE / TEXT ── */
-        .split {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-        .split-img { overflow: hidden; min-height: 520px; }
-        .split-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; display: block; }
-        .split-img:hover img { transform: scale(1.03); }
-
-        .split-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 5rem 5rem;
-            background: var(--bg-cream);
-        }
-        .split-text h2 {
-            text-align: left;
-            font-size: 2.4rem;
-            margin-bottom: 1.5rem;
-        }
-        .split-text .section-label { text-align: left; margin-bottom: 1rem; }
-        .split-text p {
-            color: var(--text-light);
-            font-size: 0.98rem;
-            line-height: 1.9;
-            margin-bottom: 1.2rem;
-        }
-        .split-text ul { list-style: none; margin-bottom: 2rem; }
-        .split-text li {
-            padding: 0.55rem 0 0.55rem 1.8rem;
-            position: relative;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-        .split-text li::before {
-            content: "—";
-            position: absolute;
-            left: 0;
-            color: var(--accent-gold);
-        }
-
-        .btn-outline {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            border: 2px solid var(--primary-navy);
-            color: var(--primary-navy);
-            text-decoration: none;
-            transition: all 0.25s;
-            align-self: flex-start;
-        }
-        .btn-outline:hover { background: var(--primary-navy); color: white; }
-
-        /* ── GALERIE ── */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: auto;
-            gap: 1rem;
-        }
-        .gallery-grid .g-wide {
-            grid-column: span 2;
-        }
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            background: #eee;
-        }
-        .gallery-item img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            display: block;
-            min-height: 280px;
-            transition: transform 0.5s ease;
-        }
-        .gallery-item:hover img { transform: scale(1.06); }
-        .gallery-label {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 2.5rem 1.5rem 1.2rem;
-            background: linear-gradient(transparent, rgba(26,45,61,0.85));
-            color: white;
-            font-family: 'Lora', serif;
-            font-size: 1rem;
-            font-weight: 500;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .gallery-item:hover .gallery-label { opacity: 1; }
-
-        /* ── VIDEO ── */
-        .video-section {
-            background: var(--primary-dark);
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .video-section-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 520px;
-        }
-        .video-wrap {
-            position: relative;
-            overflow: hidden;
-        }
-        .video-wrap video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .video-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(26,45,61,0) 60%, var(--primary-dark) 100%);
-            pointer-events: none;
-        }
-        .video-text {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 5rem 4.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        .video-text .section-label { text-align: left; margin-bottom: 1rem; }
-        .video-text h2 {
-            font-family: 'Lora', serif;
-            font-size: 2.4rem;
-            color: white;
-            font-weight: 500;
-            text-align: left;
-            margin-bottom: 1.5rem;
-            line-height: 1.25;
-        }
-        .video-text p {
-            color: rgba(255,255,255,0.65);
-            font-size: 0.98rem;
-            line-height: 1.9;
-            margin-bottom: 1rem;
-            max-width: 440px;
-        }
-        .video-gold-line {
-            width: 48px;
-            height: 2px;
-            background: var(--accent-gold);
-            margin-bottom: 2rem;
-            opacity: 0.7;
-        }
-        .video-mute-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-top: 1.5rem;
-            background: none;
-            border: 1px solid rgba(201,169,110,0.45);
-            color: rgba(255,255,255,0.6);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.78rem;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            padding: 0.65rem 1.4rem;
-            cursor: pointer;
-            transition: all 0.25s;
-            align-self: flex-start;
-        }
-        .video-mute-btn:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-        }
-        .video-mute-btn svg {
-            width: 1rem;
-            height: 1rem;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 1.6;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            .video-section-inner { grid-template-columns: 1fr; min-height: auto; }
-            .video-wrap { min-height: 280px; }
-            .video-overlay { background: linear-gradient(to bottom, rgba(26,45,61,0) 60%, var(--primary-dark) 100%); }
-            .video-text { padding: 3rem 1.5rem; }
-            .video-text h2 { font-size: 1.9rem; }
-        }
-
-        @media (max-width: 1024px) {
-            .features { grid-template-columns: repeat(2, 1fr); }
-            .amenities-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .ausflug-grid { grid-template-columns: repeat(2, 1fr); }
-            .ort-photostrip { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 768px) {
-            .container { padding: 0 1.2rem; }
-            .hero h1 { font-size: 2.4rem; }
-            nav ul { display: none; }
-            nav.active ul {
-                display: flex;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0; right: 0;
-                background: white;
-                padding: 1.5rem;
-                box-shadow: var(--shadow);
-                gap: 0.5rem;
-            }
-            nav li { border-bottom: 1px solid var(--border-light); padding: 0.6rem 0; }
-            nav li:last-child { border: none; }
-            .mobile-menu-btn { display: block; }
-            .btn-nav { display: none; }
-            .facts-grid { grid-template-columns: repeat(2, 1fr); }
-            .features { grid-template-columns: 1fr; }
-            .split { grid-template-columns: 1fr; }
-            .split-img { min-height: 300px; }
-            .split-text { padding: 3rem 1.5rem; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; }
-            .gallery-grid .g-wide { grid-column: span 1; }
-            .amenities-grid { grid-template-columns: 1fr; }
-            .location-grid { grid-template-columns: 1fr; }
-            .map-wrap { height: 320px; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            .footer-main { padding: 3rem 0 2.5rem; }
-            .footer-bar .container { flex-direction: column; gap: 0.8rem; text-align: center; }
-            .footer-bar-links { justify-content: center; }
-            .footer-cta p { font-size: 1.2rem; }
-            section h2 { font-size: 2rem; }
-            .ort-grid { grid-template-columns: 1fr; }
-            .ort-themen { grid-template-columns: 1fr; gap: 2.5rem; }
-            .ausflug-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
@@ -611,7 +128,7 @@
     <div class="container">
         <span class="section-label">Impressionen</span>
         <h2>Ein Blick ins Haus</h2>
-        <p class="section-intro">Garten, Pool, helle Räume und die  – hier ein erster Eindruck von eurem Zuhause auf Zeit.</p>
+        <p class="section-intro">Garten, Pool, helle Räume und die Terrasse – hier ein erster Eindruck von eurem Zuhause auf Zeit.</p>
         <div class="gallery-grid">
             <div class="gallery-item g-wide">
                 <img src="./images/gallery1.jpg" alt="Garten">
@@ -671,11 +188,11 @@
             <div class="video-overlay"></div>
         </div>
         <div class="video-text">
-            <span class="section-label">Atmosphäre</span>
-            <h2>Ein Ort zum Wohlfühlen</h2>
+            <span class="section-label">La Côte d'Azur</span>
+            <h2>Südfrankreich, wie es nur wenige kennen</h2>
             <p>Die sanften Wellen des Mittelmeers, das Zirpen der Zikaden und die warme Sonne der Provence – hier könnt ihr die Seele baumeln lassen.</p>
             <div class="video-gold-line"></div>
-            <button class="video-mute-btn" id="muteBtn">
+            <button class="video-mute-btn" id="muteBtn" title="Ton ausschalten">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M19 5c1.5 1.5 2.5 3.5 2.5 5.5S20.5 15 19 17"/><path d="M15 8.34a4 4 0 0 1 0 7.32"/></svg>
                 Ton an/aus
             </button>
@@ -735,7 +252,7 @@
                     <li>Gartenmöbel & Sonnenschirm</li>
                     <li>Sonnenliegen</li>
                     <li>Gemeinschaftspool direkt nebenan</li>
-					<li>Tennisplätze direkt nebenan</li>
+                    <li>Tennisplätze direkt nebenan</li>
                     <li>Privater Garten</li>
                     <li>Grillmöglichkeit</li>
                 </ul>
@@ -761,7 +278,6 @@
         <h2>La Croix Valmer</h2>
         <p class="section-intro">Ein kleines provenzalisches Dorf zwischen Weinbergen und Meer – ruhig, authentisch und trotzdem mittendrin an der schönsten Küste Frankreichs.</p>
 
-        <!-- Intro Split -->
         <div class="ort-grid">
             <img src="./images/ort-lacroix-imag1211.jpg" alt="La Croix Valmer">
             <div class="ort-text">
@@ -772,114 +288,74 @@
             </div>
         </div>
 
-        <!-- Themen-Karten -->
         <div class="ort-themen">
             <div class="ort-thema">
                 <div class="ort-thema-img-wrap">
                     <img src="./images/ort-strand-dsc0058.jpg" alt="Plage de Gigaro" class="ort-thema-img">
                 </div>
-                <h3>
-                    <span class="thema-icon">
-                        <!-- Waves -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 17c1.5-1.5 3.5-1.5 5 0s3.5 1.5 5 0 3.5-1.5 5 0"/><path d="M2 12c1.5-1.5 3.5-1.5 5 0s3.5 1.5 5 0 3.5-1.5 5 0"/><path d="M2 7c1.5-1.5 3.5-1.5 5 0s3.5 1.5 5 0 3.5-1.5 5 0"/></svg>
-                    </span>Strände
-                </h3>
-                <p>Die Plage de Gigaro und die umliegenden Buchten zählen zu den schönsten Stränden der gesamten Côte d'Azur. Feiner Sand, türkisblaues, klares Wasser und kaum Massentourismus – hier findet man noch echte Entspannung. Das Cap Lardier schützt die Bucht und macht sie besonders ruhig und natürlich.</p>
+                <h3><span class="thema-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 17c1.5-1.5 3.5-1.5 5 0s3.5 1.5 5 0 3.5-1.5 5 0"/><path d="M2 12c1.5-1.5 3.5-1.5 5 0s3.5 1.5 5 0 3.5-1.5 5 0"/><path d="M2 7c1.5-1.5 3.5-1.5 5 0s3.5 1.5 5 0 3.5-1.5 5 0"/></svg></span>Strände</h3>
+                <p>Die Plage de Gigaro und die umliegenden Buchten zählen zu den schönsten Stränden der gesamten Côte d'Azur. Feiner Sand, türkisblaues, klares Wasser und kaum Massentourismus – hier findet man noch echte Entspannung.</p>
             </div>
             <div class="ort-thema">
                 <div class="ort-thema-img-wrap">
                     <img src="./images/ort-markt-imag1218.jpg" alt="Wochenmarkt La Croix Valmer" class="ort-thema-img">
                 </div>
-                <h3>
-                    <span class="thema-icon">
-                        <!-- Shopping bag / market -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                    </span>Dorf & Markt
-                </h3>
-                <p>Das lebendige Dorfzentrum bietet alles für den täglichen Bedarf – Bäckereien, Restaurants, Supermärkte und kleine Boutiquen. Der Wochenmarkt ist ein echtes Erlebnis: frische Oliven, Lavendel, Käse und provenzalische Spezialitäten – ein Fest für alle Sinne. Im Sommer finden auf dem Forum regelmäßig Konzerte und Veranstaltungen statt.</p>
+                <h3><span class="thema-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>Dorf & Markt</h3>
+                <p>Das lebendige Dorfzentrum bietet alles für den täglichen Bedarf. Der Wochenmarkt ist ein echtes Erlebnis: frische Oliven, Lavendel, Käse und provenzalische Spezialitäten – ein Fest für alle Sinne.</p>
             </div>
             <div class="ort-thema">
                 <div class="ort-thema-img-wrap">
                     <img src="./images/ort-cap-lardier.jpg" alt="Cap Lardier Wanderweg" class="ort-thema-img">
                 </div>
-                <h3>
-                    <span class="thema-icon">
-                        <!-- Footsteps / trail -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17l4-8 4 4 4-6 4 10"/><path d="M3 21h18"/></svg>
-                    </span>Natur & Wandern
-                </h3>
-                <p>Das <strong>Cap Lardier</strong> ist ein Naturschutzgebiet von atemberaubender Schönheit – wilde Felsküste, Macchia, Pinienwälder und weite Meeresblicke. Der Küstenweg führt vorbei an einsamen Buchten und bietet immer wieder spektakuläre Aussichten. Ideal für Wanderer, Jogger und alle, die unberührte Natur lieben.</p>
+                <h3><span class="thema-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 17l4-8 4 4 4-6 4 10"/><path d="M3 21h18"/></svg></span>Natur & Wandern</h3>
+                <p>Das <strong>Cap Lardier</strong> ist ein Naturschutzgebiet von atemberaubender Schönheit – wilde Felsküste, Macchia, Pinienwälder und weite Meeresblicke. Ideal für Wanderer, Jogger und Naturliebhaber.</p>
             </div>
             <div class="ort-thema">
                 <div class="ort-thema-img-wrap">
-                    <img src="./images/ort-wassersport.jpg" alt="Wassersport an der Plage de Gigaro" class="ort-thema-img">
+                    <img src="./images/ort-wassersport.jpg" alt="Wassersport" class="ort-thema-img">
                 </div>
-                <h3>
-                    <span class="thema-icon">
-                        <!-- Anchor / water sport -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="22"/><path d="M5 15H2a10 10 0 0 0 20 0h-3"/></svg>
-                    </span>Wassersport & Meer
-                </h3>
-                <p>Das Mittelmeer vor der Tür lädt zu vielfältigen Aktivitäten ein: Schnorcheln, Kajakfahren, Stand-Up-Paddling oder einfach Schwimmen in glasklarem Wasser. An der Plage de Gigaro können Boote und Wassersportgeräte gemietet werden. Die Bucht ist ruhig genug für Familien und abwechslungsreich genug für Aktive.</p>
+                <h3><span class="thema-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><line x1="12" y1="8" x2="12" y2="22"/><path d="M5 15H2a10 10 0 0 0 20 0h-3"/></svg></span>Wassersport & Meer</h3>
+                <p>Schnorcheln, Kajakfahren, Stand-Up-Paddling oder einfach Schwimmen in glasklarem Wasser. An der Plage de Gigaro können Boote und Wassersportgeräte gemietet werden.</p>
             </div>
         </div>
 
-        <!-- Ortsfakten -->
         <div class="ort-fakten">
-            <div class="ort-fakt">
-                <span class="of-val">~5 000</span>
-                <span class="of-label">Einwohner</span>
-            </div>
-            <div class="ort-fakt">
-                <span class="of-val">7 km</span>
-                <span class="of-label">Küstenlinie</span>
-            </div>
-            <div class="ort-fakt">
-                <span class="of-val">6</span>
-                <span class="of-label">Strände & Buchten</span>
-            </div>
-            <div class="ort-fakt">
-                <span class="of-val">1</span>
-                <span class="of-label">Naturschutzgebiet Cap Lardier</span>
-            </div>
-            <div class="ort-fakt">
-                <span class="of-val">1×</span>
-                <span class="of-label">Wochenmarkt</span>
-            </div>
-            <div class="ort-fakt">
-                <span class="of-val">~20 min</span>
-                <span class="of-label">bis Saint-Tropez</span>
-            </div>
+            <div class="ort-fakt"><span class="of-val">~5 000</span><span class="of-label">Einwohner</span></div>
+            <div class="ort-fakt"><span class="of-val">7 km</span><span class="of-label">Küstenlinie</span></div>
+            <div class="ort-fakt"><span class="of-val">6</span><span class="of-label">Strände & Buchten</span></div>
+            <div class="ort-fakt"><span class="of-val">1</span><span class="of-label">Naturschutzgebiet Cap Lardier</span></div>
+            <div class="ort-fakt"><span class="of-val">1×</span><span class="of-label">Wochenmarkt</span></div>
+            <div class="ort-fakt"><span class="of-val">~20 min</span><span class="of-label">bis Saint-Tropez</span></div>
         </div>
 
-        <!-- Links & Tipps -->
         <div class="ort-links">
-            <p class="ort-links-intro">Weitere Ausflugsziele, Aktivitäten und Restaurants findet man z.&nbsp;B. auf TripAdvisor oder der offiziellen Internetseite von La Croix.</p>
+            <p class="ort-links-intro">Weitere Informationen zur Region, Strände, Märkte und Ausflugsziele findet ihr auf diesen Seiten:</p>
             <ul class="ort-links-list">
                 <li>
-                    <a href="https://www.lacroixvalmer.fr" target="_blank" rel="noopener">
-                        <span class="ol-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg>
-                        </span>
-                        <span>La Croix Valmer Tourisme</span>
+                    <a href="https://www.lacroixvalmer.fr/de/" target="_blank" rel="noopener">
+                        <span class="ol-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg></span>
+                        <span>Offizielle Tourismus-Webseite La Croix Valmer</span>
                         <span class="ol-arrow">→</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.tripadvisor.de/Attractions-g1178050-Activities-La_Croix_Valmer_Var_Provence_Alpes_Cote_d_Azur.html" target="_blank" rel="noopener">
-                        <span class="ol-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg>
-                        </span>
-                        <span>Ausflugsmöglichkeiten auf Tripadvisor</span>
+                    <a href="https://www.golfe-de-saint-tropez-tourisme.com/de/" target="_blank" rel="noopener">
+                        <span class="ol-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg></span>
+                        <span>Tourismus Golf von Saint-Tropez (deutsch)</span>
                         <span class="ol-arrow">→</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.tripadvisor.de/Restaurants-g1178050-La_Croix_Valmer_Var_Provence_Alpes_Cote_d_Azur.html" target="_blank" rel="noopener">
-                        <span class="ol-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg>
-                        </span>
-                        <span>Restaurants auf Tripadvisor</span>
+                    <a href="https://www.provence-alpes-cotedazur.com/de/" target="_blank" rel="noopener">
+                        <span class="ol-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg></span>
+                        <span>Provence-Alpes-Côte d'Azur Tourismus (deutsch)</span>
+                        <span class="ol-arrow">→</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://de.france.fr/de/provence-cote-dazur" target="_blank" rel="noopener">
+                        <span class="ol-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"/></svg></span>
+                        <span>Frankreich Tourismus – Provence & Côte d'Azur (deutsch)</span>
                         <span class="ol-arrow">→</span>
                     </a>
                 </li>
@@ -896,33 +372,27 @@
         <p class="section-intro">Von La Croix Valmer aus ist die gesamte Côte d'Azur euer Spielplatz – legendäre Hafenstädte, wilde Schluchten und unberührte Inseln, alles in kurzer Fahrtzeit erreichbar.</p>
         <div class="ausflug-grid">
             <div class="ausflug-card">
-                <div class="ausflug-card-img">
-                    <img src="./images/saint-tropez.jpg" alt="Saint-Tropez">
-                </div>
+                <div class="ausflug-card-img"><img src="./images/saint-tropez.jpg" alt="Saint-Tropez"></div>
                 <div class="ausflug-card-body">
                     <span class="dist-badge">ca. 20 Min. · Auto</span>
                     <h3>Saint-Tropez</h3>
-                    <p>Der berühmteste Hafen der Riviera. Bummelt durch die bunten Gassen der Altstadt, besucht den Dienstagmarkt auf der Place des Lices oder gönnt euch einen Aperitif mit Blick auf die Boote. Am besten früh morgens, wenn der Ort noch ganz euch gehört.</p>
+                    <p>Der berühmteste Hafen der Riviera. Bummelt durch die bunten Gassen der Altstadt, besucht den Dienstagmarkt auf der Place des Lices oder gönnt euch einen Aperitif mit Blick auf die Boote.</p>
                 </div>
             </div>
             <div class="ausflug-card">
-                <div class="ausflug-card-img">
-                    <img src="./images/porquerolles.jpg" alt="Île de Porquerolles">
-                </div>
+                <div class="ausflug-card-img"><img src="./images/porquerolles.jpg" alt="Île de Porquerolles"></div>
                 <div class="ausflug-card-body">
                     <span class="dist-badge">ca. 60 Min. · Auto + Fähre</span>
                     <h3>Île de Porquerolles</h3>
-                    <p>Eine der schönsten Inseln des Mittelmeers – Nationalpark, keine Autos, türkisblaues Wasser. Mit der Fähre von Hyères in 20 Minuten erreichbar. Ideal für einen ganzen Urlaubstag: Fahrrad mieten, Strände erkunden, mittags frischen Fisch essen.</p>
+                    <p>Eine der schönsten Inseln des Mittelmeers – Nationalpark, keine Autos, türkisblaues Wasser. Mit der Fähre von Hyères in 20 Minuten erreichbar.</p>
                 </div>
             </div>
             <div class="ausflug-card">
-                <div class="ausflug-card-img">
-                    <img src="./images/gorges-du-verdon.jpg" alt="Gorges du Verdon">
-                </div>
+                <div class="ausflug-card-img"><img src="./images/gorges-du-verdon.jpg" alt="Gorges du Verdon"></div>
                 <div class="ausflug-card-body">
                     <span class="dist-badge">ca. 90 Min. · Auto</span>
                     <h3>Gorges du Verdon</h3>
-                    <p>Europas Grand Canyon – 700 Meter tiefe Schluchten, smaragdgrünes Wasser und atemberaubende Panoramastraßen. Ein unvergesslicher Ausflug ins Hinterland der Provence, perfekt für alle, die die Natur abseits des Strandes erleben möchten.</p>
+                    <p>Europas Grand Canyon – 700 Meter tiefe Schluchten, smaragdgrünes Wasser und atemberaubende Panoramastraßen. Ein unvergesslicher Ausflug ins Hinterland der Provence.</p>
                 </div>
             </div>
         </div>
@@ -947,15 +417,11 @@
                     <li><span class="place">Cannes</span><span class="dist">ca. 60 Min. mit dem Auto</span></li>
                     <li><span class="place">Flughafen Nizza (NCE)</span><span class="dist">ca. 90 Min. mit dem Auto</span></li>
                 </ul>
-
                 <h3 style="margin-top: 2.5rem;">Was euch erwartet</h3>
                 <p>Wunderschöne Sandstrände, klares Mittelmeer-Wasser, Wassersport, Wanderungen entlang der Küste, Wochenmärkte mit regionalen Produkten, Weinverkostungen und natürlich – die Atmosphäre, die nur die Provence hat.</p>
             </div>
             <div class="map-wrap">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d368367.5!2d6.5743!3d43.2071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f7.0!3m3!1m2!1s0x12cdb7b9b6e6e6e7%3A0x1!2sLa%20Croix-Valmer%2C%20Frankreich!5e0!3m2!1sde!2sde!4v1710000000000"
-                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d368367.5!2d6.5743!3d43.2071!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f7.0!3m3!1m2!1s0x12cdb7b9b6e6e6e7%3A0x1!2sLa%20Croix-Valmer%2C%20Frankreich!5e0!3m2!1sde!2sde!4v1710000000000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </div>
@@ -973,10 +439,7 @@
                     </a>
                     <p class="footer-tagline">Ferienhaus in La Croix Valmer<br>Golf von Saint-Tropez<br>Provence-Alpes-Côte d'Azur, Frankreich</p>
                     <div class="footer-contacts">
-                        <a href="mailto:info@fewo-lacroix.de">
-                            <span class="fc-icon">📧</span>
-                            info@fewo-lacroix.de
-                        </a>
+                        <a href="mailto:info@fewo-lacroix.de"><span class="fc-icon">📧</span>info@fewo-lacroix.de</a>
                     </div>
                 </div>
                 <div>
@@ -1010,55 +473,6 @@
     </div>
 </footer>
 
-<script>
-    // Mobile Menu
-    const menuBtn = document.getElementById('menuBtn');
-    const navbar  = document.getElementById('navbar');
-    menuBtn.addEventListener('click', () => navbar.classList.toggle('active'));
-    document.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => navbar.classList.remove('active')));
-
-    // Smooth Scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href.length > 1) {
-                const target = document.querySelector(href);
-                if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-            }
-        });
-    });
-
-    // Galerie Lightbox
-    document.querySelectorAll('.gallery-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const src   = this.querySelector('img').src;
-            const label = this.querySelector('.gallery-label')?.textContent || '';
-            const modal = document.createElement('div');
-            modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.92);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;padding:2rem;cursor:pointer;';
-            modal.innerHTML = `<img src="${src}" style="max-width:90vw;max-height:80vh;object-fit:contain;display:block;"><p style="color:rgba(255,255,255,0.7);margin-top:1rem;font-size:0.9rem;letter-spacing:1px;">${label}</p>`;
-            modal.addEventListener('click', () => modal.remove());
-            document.body.appendChild(modal);
-        });
-    });
-
-    // FAQ Toggle
-    document.querySelectorAll('.faq-q').forEach(q => {
-        q.addEventListener('click', function() {
-            const answer = this.nextElementSibling;
-            const isOpen = this.classList.contains('open');
-            // Alle schließen
-            document.querySelectorAll('.faq-q').forEach(el => { el.classList.remove('open'); el.nextElementSibling.classList.remove('open'); });
-            if (!isOpen) { this.classList.add('open'); answer.classList.add('open'); }
-        });
-    });
-
-    // Video Mute Button
-    const muteBtn = document.getElementById('muteBtn');
-    const video = document.querySelector('.video-wrap video');
-    muteBtn.addEventListener('click', () => {
-        video.muted = !video.muted;
-        muteBtn.textContent = video.muted ? 'Ton an' : 'Ton aus';
-    });
-</script>
+<script src="./js/main.js"></script>
 </body>
 </html>
